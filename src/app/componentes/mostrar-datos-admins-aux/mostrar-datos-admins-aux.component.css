@@ -1,0 +1,111 @@
+.intentos-container {
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #393E46;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.intentos-container h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #222831;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #001f3f;
+  color: #fdfdf5;
+}
+
+thead th {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+tbody td {
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid #9daccc;}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+  width: 90%;
+  padding: 0.4rem;
+  border: 2px solid #9daccc;
+  border-radius: 6px;
+  background-color: #fdfdf5;
+  color: #222831;
+  font-size: 0.9rem;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  background-color: #001f3f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background-color: #9daccc;
+}
+
+button:disabled {
+  background-color: #001f3f;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  select {
+    width: 100%;
+  }
+}

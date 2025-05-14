@@ -1,0 +1,55 @@
+<div style="text-align: center; color: #001f3f; text-shadow:10px 10px 8px #001f3f;">
+  <h1>Ejercicios</h1>
+  <h4>Rutinas que te pueden ayudar en tu entrenamiento</h4>
+</div>
+
+<div>
+  
+</div>
+
+@if (cargando) {
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div class="contenedor-ejercicios">
+    @for (ejercicio of ejercicios; track ejercicio.id) {
+      <mat-card class="card-ejercicio" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{ ejercicio.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ ejercicio.musculo }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p><strong>Equipamiento:</strong> {{ ejercicio.equipamiento }}</p>
+          <p><strong>Nivel:</strong> {{ ejercicio.nivel }}</p>
+        </mat-card-content>
+
+        <mat-card-footer class="example-card-footer">
+          <mat-chip-set aria-label="Características del ejercicio">
+            <mat-chip color="primary" selected>{{ ejercicio.musculo }}</mat-chip>
+            <mat-chip>{{ ejercicio.equipamiento }}</mat-chip>
+            <mat-chip>{{ ejercicio.nivel }}</mat-chip>
+          </mat-chip-set>
+        </mat-card-footer>
+      </mat-card>
+    }
+  </div>
+}
+
+<div class="textAux" style="text-align: center; font-size: 30px; color: #001f3f; text-shadow:10px 10px 8px #001f3f;">
+  <h2>Puedes ver como organizar tus planes consultando a uno de nuestro coaches en su página de Youtube</h2>
+</div>
+
+<div class="contenedor">
+
+  <iframe width="560" 
+    height="315" 
+    [src]="video | domseguro:'https://www.youtube.com/embed/'"
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+

@@ -1,0 +1,40 @@
+.contenedor-principal {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor-ejercicios {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  flex: 1; /* mantiene la altura sin afectar la card */
+}
+
+.card-ejercicio {
+  width: 280px;
+  align-self: flex-start; /* previene que se estire */
+}
+
+.spinner-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.mensaje-no-encontrado {
+  text-align: center;
+  font-size: 1.2rem;
+  color: red;
+  margin-top: 2rem;
+}
+
+.example-card-footer {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+

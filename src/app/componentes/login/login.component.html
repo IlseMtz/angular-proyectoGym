@@ -1,0 +1,40 @@
+<div class="containerLogIn" style="border: 4px solid #001f3f;  ">
+    <h1 style="color: #001f3f; margin-left: 10px; font-weight: bold; text-align: center; border-radius: 6px;">Welcome to KrakenGYM</h1>
+    <h2 style=" color: #001f3f; width: 200px; font-weight: bold; text-align: center; margin-left: 100px; margin-bottom: 50px; font-size: 40px; margin-top: 30px; border-radius: 6px;" >Log In</h2>
+    <form (ngSubmit)="checkLogin()">
+        <div>
+            <label for="username">Usuario: </label>
+            <input type="text" name="username" id="username" [(ngModel)]="username" required>
+        </div>
+        <div>
+            <label for="username">Password: </label>
+            <input type="password" name="password" id="password" [(ngModel)]="password" required>
+        </div>
+        <div>
+            <label for="username">Fecha de cumpleaños: </label>
+            <input type="date" name="birthday" id="birthday" [(ngModel)]="birthday" required>
+        </div>
+
+        <div class="barraEscojer">
+            <label for="gender">Género:</label>
+            <select name="gender" id="gender" [(ngModel)]="gender" required>
+                <option value="" disabled selected>Selecciona tu género</option>
+                <option value="Hombre">Masculino</option>
+                <option value="Mujer">Femenino</option>
+                <option value="Prefiero no especificar">Prefiero no especificar</option>
+            </select>
+        </div>
+
+
+        <div class="exceptLabel">
+            <label>
+                I´m not a robot
+              <input type="checkbox" [(ngModel)]="isHuman" name="isHuman" required>
+            </label>
+        </div>
+        
+
+        <button type="submit" [disabled]="!isHuman || !password || !username || !birthday || !gender">Enter</button>
+
+    </form>
+</div>

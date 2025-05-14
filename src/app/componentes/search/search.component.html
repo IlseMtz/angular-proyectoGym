@@ -1,0 +1,34 @@
+<div class="contenedor-principal">
+  @if (cargando) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  } @else {
+    <div class="contenedor-ejercicios">
+      @if (ejercicioEncontrado) {
+        <mat-card class="card-ejercicio" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ ejercicioEncontrado.nombre }}</mat-card-title>
+            <mat-card-subtitle>{{ ejercicioEncontrado.musculo }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p><strong>Equipamiento:</strong> {{ ejercicioEncontrado.equipamiento }}</p>
+            <p><strong>Nivel:</strong> {{ ejercicioEncontrado.nivel }}</p>
+          </mat-card-content>
+
+          <mat-card-footer class="example-card-footer">
+            <mat-chip-set aria-label="Características del ejercicio">
+              <mat-chip color="primary" selected>{{ ejercicioEncontrado.musculo }}</mat-chip>
+              <mat-chip>{{ ejercicioEncontrado.equipamiento }}</mat-chip>
+              <mat-chip>{{ ejercicioEncontrado.nivel }}</mat-chip>
+            </mat-chip-set>
+          </mat-card-footer>
+        </mat-card>
+      } @else {
+        <p>No se encontró el ejercicio.</p>
+      }
+    </div>
+  }
+</div>
+

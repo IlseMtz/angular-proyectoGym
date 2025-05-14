@@ -1,0 +1,9 @@
+<div class="imagenes-lugar">
+  <h2 style="background-color: white; color: #001f3f; text-shadow:10px 10px 8px #001f3f; border-radius: 4px; width: 500px; margin: 0 auto; margin-bottom: 100px;">Instalaciones</h2>
+  <div class="imagenes-grid" #imagenesGrid></div>
+</div>
+
+<div class="lightbox" #lightbox (click)="cerrarImagen()">
+  <img #lightboxImg class="lightbox-img zoom-in" (click)="$event.stopPropagation()">
+  <button class="cerrar-btn" (click)="cerrarImagen()">✕</button>
+</div>

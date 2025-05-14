@@ -1,0 +1,27 @@
+<div id="contenedorText">
+<h1>EQUIPO X</h1>
+<p>Somos un equipo comprometido con tu bienestar físico y mental. 
+    Nuestro objetivo es ayudarte a alcanzar tus metas a través de un entrenamiento personalizado, 
+    clases dinámicas y un ambiente motivador. Contamos con un equipo de profesionales apasionados 
+    por el fitness, listos para acompañarte en cada paso de tu transformación.</p>
+</div>
+
+<h1>Integrantes</h1>
+<div id="contenedor">
+  @for (integrante of integrantes; track integrante.nombre) {
+    <div class="card mb-3" style="max-width: 540px;" [ngClass]="{ 'highlight-card': integrante.telefono.includes('449') }"  [ngStyle]="{'background-color': integrante.telefono.startsWith('332') ? '#98d2d8' : '#007f8a', 'color': integrante.telefono.startsWith('449') ? 'white' : '#007f8a', 'font-family': integrante.nombre.startsWith('Ramírez') ? 'Verdana, sans-serif' : 'Courier new, serif'}">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="integrante.imagen" class="img-fluid rounded-start" [alt]="integrante.nombre">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ integrante.nombre }}</h5>
+            <p class="card-text">Teléfono: {{ integrante.telefono }}</p>
+            <p class="card-text"><small class="text-muted">{{ integrante.descripcion }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

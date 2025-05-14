@@ -1,0 +1,173 @@
+<!-- Sección de Urgencia -->
+<div class="urgencia-container">
+  <div class="urgencia">
+    <mat-icon color="warn">access_time</mat-icon>
+    <span><strong>¡Solo quedan 5 plazas disponibles este mes!</strong></span>
+  </div>
+</div>
+
+<div class="contenedor">
+  <iframe width="560" 
+  height="315" 
+  [src]="video | domseguro:'https://www.youtube.com/embed/'"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="enviarFormulario()">
+  <!--Nombre-->
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput id="nombre" type="text" formControlName="nombre" />
+
+    @if (form.get('nombre')?.touched && form.get('nombre')?.invalid) {
+      <div>
+        @if (form.get('nombre')?.errors?.['required']) {
+          <mat-error>El nombre es requerido.</mat-error>
+        }
+        @if (form.get('nombre')?.errors?.['pattern']) {
+          <mat-error>El nombre solo debe contener letras y espacios.</mat-error>
+        }
+        @if (form.get('nombre')?.errors?.['minlength']) {
+          <mat-error>El nombre debe tener al menos 2 caracteres.</mat-error>
+        }
+        @if (form.get('nombre')?.errors?.['maxlength']) {
+          <mat-error>La contraseña es requerida.</mat-error>
+        }
+      </div>
+    }
+  </mat-form-field>
+
+  <!--Email-->
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput id="email" type="email" formControlName="email" />
+
+    @if (form.get('email')?.touched && form.get('email')?.invalid) {
+      <div>
+        @if (form.get('email')?.errors?.['required']) {
+          <mat-error>El email es requerido.</mat-error>
+        }
+        @if (form.get('email')?.errors?.['email']) {
+          <mat-error>El email no es válido.</mat-error>
+        }
+      </div>
+    }
+  </mat-form-field>
+
+  <!--Contraseña-->
+  <mat-form-field appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input matInput id="password" type="password" formControlName="password" />
+    @if (form.get('password')?.touched && form.get('password')?.invalid) {
+      <div>
+        @if (form.get('password')?.errors?.['required']) {
+          <mat-error>La contraseña es requerida.</mat-error>
+        }
+        @if (form.get('password')?.errors?.['minlength']) {
+          <mat-error>Debes tener al menos 12 caracteres.</mat-error>
+        }
+      </div>
+    }
+  </mat-form-field>
+
+  <!--Repetir Contraseña-->
+  <mat-form-field appearance="fill">
+    <mat-label>Repetir contraseña</mat-label>
+    <input matInput id="repeat_password" type="password" formControlName="repeat_password" />
+
+    @if (form.get('repeat_password')?.touched && form.get('repeat_password')?.invalid) {
+      <div>
+        @if (form.get('repeat_password')?.errors?.['required']) {
+        <mat-error>Campo obligatorio.</mat-error>
+      }
+      @if (form.get('repeat_password')?.errors?.['minlength']) {
+        <mat-error>Debes tener al menos 12 caracteres.</mat-error>
+      }
+      @if (form.get('repeat_password')?.errors?.['isValid'] === false) {
+        <mat-error>Las contraseñas no coinciden.</mat-error>
+      }
+      </div>
+    }
+  </mat-form-field>
+
+  <!-- Paquetes (Radios) -->
+  <label>Selecciona un paquete:</label>
+  <mat-radio-group formControlName="paquete">
+    <mat-radio-button value="paquete1">Ritmo Fit</mat-radio-button>
+    <mat-radio-button value="paquete2">Power Fusion</mat-radio-button>
+    <mat-radio-button value="paquete3">Power Burn</mat-radio-button>
+    <mat-radio-button value="paquete4">Golpe Activo</mat-radio-button>
+    <mat-radio-button value="paquete5">Balanceo Intenso</mat-radio-button>
+  </mat-radio-group>
+
+  @if (form.get('paquete')?.touched && form.get('paquete')?.invalid) {
+    <mat-error>Debes seleccionar un paquete.</mat-error>
+  }
+
+  <!-- Plan (Select) -->
+  <mat-form-field appearance="fill">
+    <mat-label>Selecciona un plan</mat-label>
+    <mat-select id="plan" formControlName="plan">
+      @for (plan of planes; track plan.valor) {
+        <mat-option [value]="plan.valor">{{ plan.etiqueta }}</mat-option>
+      }
+    </mat-select>
+
+    @if (form.get('plan')?.touched && form.get('plan')?.invalid) {
+      <mat-error>Debes seleccionar un plan.</mat-error>
+    }
+  </mat-form-field>
+
+
+    
+  <!-- Fecha de Inicio -->
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de inicio</mat-label>
+    <input matInput [matDatepicker]="inicioPicker" formControlName="fechaInicio" [min]="minFecha">
+    <mat-datepicker-toggle matIconSuffix [for]="inicioPicker"></mat-datepicker-toggle>
+    <mat-datepicker #inicioPicker></mat-datepicker>
+    @if(form.get('fechaInicio')?.touched && form.get('fechaInicio')?.invalid){
+      <mat-error>
+        Debes seleccionar una fecha válida.
+      </mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Fecha de Finalización (solo lectura) -->
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de finalización</mat-label>
+    <input matInput [value]="fechaFinInput" disabled>
+  </mat-form-field>
+
+  <!-- Precio Calculado -->
+  @if (precioFinal !== null) {
+    <div class="precio">
+      <strong>Precio total: ${{ precioFinal }}</strong>
+    </div>
+  }
+  <button mat-raised-button color="primary" type="submit" routerLink="/inscribete" [disabled]="form.invalid">Inscribirse</button>
+</form>
+
+<!-- Sección de Testimonios  -->
+<section class="testimonios">
+  <h2 style="text-shadow:10px 10px 8px #001f3f;">Lo que dicen nuestros miembros</h2>
+
+  <div class="testimonios-list">
+    @for (t of testimonios; track t.autor) {
+      <mat-card appearance="outlined" class="testimonio-card">
+        <mat-card-content>
+          <p class="mensaje">“{{ t.mensaje }}”</p>
+          <p class="autor">– {{ t.autor }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button color="primary">LIKE</button>
+          <button mat-button color="accent">SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</section>
+

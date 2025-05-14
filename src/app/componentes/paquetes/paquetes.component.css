@@ -1,0 +1,44 @@
+.carousel-inner{
+    width: 50%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.auxTexto{
+    color: #DFD0B8;
+    text-align: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.6); 
+  border-radius: 50%;
+  background-size: 60% 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #555; 
+}
+
+.carousel-indicators .active {
+  background-color: #001f3f;
+}
+
+.btn-inscribete {
+    background-color: #001f3f; 
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 3rem;
+}
+
+.btn-inscribete:hover {
+    background-color: #003366; 
+}
